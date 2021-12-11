@@ -3,15 +3,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
   height: 80px;
   width: 100%;
   top: 0;
-  background-color: green;
+  z-index: 1;
+  //background-color: #171510;
+  background-color: #2A2E34;
+
+  form {
+    margin-right: 48px;
+    display: flex;
+  }
 }
 
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FED053;
+}
+
+.search-input{
+  height: 24px;
+}
+
+.search-button {
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    height: 24px;
+    width: 24px;
+  }
+}
 
 .planet-list-container {
   width: 900px;
-  margin: 0 auto 80px auto;
+  margin: 0 auto;
+}
+
+.footer {
+  color: #FFFFFF;
 }

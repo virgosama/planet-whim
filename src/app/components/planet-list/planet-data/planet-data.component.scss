@@ -1,8 +1,10 @@
 .planet-data__container {
-  padding: 80px 0;
+  padding-top: 80px;
 
   li {
-    background-color: rgba(255, 255, 255, .15);
+    transition: all .25s ease-in-out;
+    //background-color: rgba(255, 255, 255, .15);
+    background-color: #3B3F46;
     height: 80px;
     width: 100%;
     list-style-type: none;
@@ -22,7 +24,6 @@
 }
 
 .planet-logo {
-  background-color: aqua;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
@@ -31,4 +32,11 @@
   height: 32px;
 }
 
+.color-aqua {
+  background-color: aqua;
+}
+
+.color-limegreen {
+  background-color: lightcoral;
+}
 

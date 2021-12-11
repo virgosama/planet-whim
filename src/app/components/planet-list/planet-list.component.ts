@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
     templateUrl: './planet-list.component.html',
     styleUrls: ['./planet-list.component.scss']
 })
-export class PlanetListComponent implements OnInit, OnChanges {
+export class PlanetListComponent implements OnInit {
 
     @Output() emitDetails = new EventEmitter();
 
@@ -17,12 +17,10 @@ export class PlanetListComponent implements OnInit, OnChanges {
     nextPage = '';
     planetArrays: PlanetDetails[] = [];
     showPlanetList = true;
+    endOfPage = false;
 
     constructor(private planetService: PlanetService,
                 private formBuilder: FormBuilder) {
-    }
-
-    ngOnChanges(): void {
     }
 
     ngOnInit(): void {
@@ -35,13 +33,14 @@ export class PlanetListComponent implements OnInit, OnChanges {
     showPlanetDetails(planet: PlanetDetails): void {
         this.sendPlanetDetails = planet;
         this.showPlanetList = false;
-        console.log(planet);
+        this.endOfPage = false;
     }
 
     onSearch(): void {
         this.planetService.searchPlanets(this.searchForm.get('planetName').value).subscribe(response => {
             this.nextPage = response.next;
             this.planetArrays = response.results;
+            this.endOfPage = false;
         });
     }
 
@@ -49,12 +48,16 @@ export class PlanetListComponent implements OnInit, OnChanges {
         this.planetService.loadPlanets(this.nextPage).subscribe(response => {
             this.nextPage = response.next;
             this.planetArrays = this.planetArrays.concat(response.results);
+            this.endOfPage = false;
         });
     }
 
     onScrollingFinished(): void {
         if (this.nextPage) {
             this.getPlanetList();
+        } else {
+            this.endOfPage = true;
         }
+        console.log(this.endOfPage);
     }
 }

@@ -1,8 +1,14 @@
-<div class="header">
-    <span>Title</span>
+<div class="header pl-4 pr-4">
+    <span class="header-title">May the force be with you</span>
     <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
-        <input type="text" formControlName="planetName">
-        <button type="submit">search</button>
+        <input
+                type="text"
+                formControlName="planetName"
+                class="search-input"
+        placeholder="Search planet's name"/>
+        <button class="search-button">
+            <img src="../../../assets/search.svg" />
+        </button>
     </form>
 </div>
 <div class="planet-list-container">
@@ -16,4 +22,7 @@
             *ngIf="!showPlanetList"
             [planetDetails]="sendPlanetDetails">
     </app-planet-details>
+</div>
+<div *ngIf=endOfPage class="footer text-center mt-2 mb-4">
+    <span>End of page</span>
 </div>

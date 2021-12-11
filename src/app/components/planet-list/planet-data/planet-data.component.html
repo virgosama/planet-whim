@@ -1,7 +1,6 @@
 <ul class="planet-data__container" scrollTracker (scrollingFinished)="onScrollingFinished()">
-    <li *ngFor="let planet of planets" (click)="onClickPlanet(planet)">
-        <div class="planet-logo"></div>
+    <li *ngFor="let planet of planets; let index = index" (click)="onClickPlanet(planet)">
+        <div class="planet-logo" [ngClass]="index % 2 === 0 ? 'color-aqua' : 'color-limegreen'"></div>
         <span>{{planet?.name}}</span>
-        <div></div>
     </li>
 </ul>

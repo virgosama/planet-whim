@@ -6,35 +6,35 @@
         </div>
         <div class="planet-details__data">
             <div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Rotation Period:</label>
                     <span>{{planetDetails.rotation_period}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Orbital Period:</label>
                     <span>{{planetDetails.orbital_period}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Diameter:</label>
                     <span>{{planetDetails.diameter}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Climate:</label>
                     <span>{{planetDetails.climate}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Gravity:</label>
                     <span>{{planetDetails.gravity}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Terrain:</label>
                     <span>{{planetDetails.terrain}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Surface Water:</label>
                     <span>{{planetDetails.surface_water}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div class="data-row-separator">
                     <label>Population:</label>
                     <span>{{planetDetails.population}}</span>
                 </div>
@@ -43,23 +43,25 @@
                 <span>{{planetDetails.url}}</span>
             </div>
             <div>
-                <div style="margin-bottom: 24px;">
+                <div *ngIf="residentsList.length > 0"
+                     class="data-row-separator">
                     <label>Residents:</label>
-                    <span *ngFor="let resident of planetDetails.residents">{{resident}}</span>
+                    <span *ngFor="let resident of residentsList">{{resident.name}}</span>
                 </div>
-                <div style="margin-bottom: 24px;">
+                <div *ngIf="filmList.length > 0"
+                     class="data-row-separator">
                     <label>Films:</label>
-                    <span *ngFor="let film of planetDetails.films">{{film}}</span>
+                    <span *ngFor="let film of filmList">{{film.title}}</span>
                 </div>
             </div>
         </div>
-        <div class="planet-details__footer mt-5">
+        <div class="planet-details__footer">
             <div>
-                <label>Created:</label>
+                <label>Created on </label>
                 <span>{{planetDetails.created}}</span>
             </div>
             <div>
-                <label>Edited:</label>
+                <label>Edited on </label>
                 <span>{{planetDetails.edited}}</span>
             </div>
         </div>

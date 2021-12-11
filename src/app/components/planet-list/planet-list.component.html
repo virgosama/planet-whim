@@ -1,4 +1,4 @@
-<div class="header pl-4 pr-4">
+<div class="header">
     <span class="header-title">May the force be with you</span>
     <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
         <input
@@ -23,6 +23,6 @@
             [planetDetails]="sendPlanetDetails">
     </app-planet-details>
 </div>
-<div *ngIf=endOfPage class="footer text-center mt-2 mb-4">
+<div *ngIf=endOfPage class="footer">
     <span>End of page</span>
 </div>

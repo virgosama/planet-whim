@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PlanetDetails} from '../../models/planet';
+import {PlanetService} from '../../services/planet.service';
+import {Resident} from '../../models/residents';
+import {Film} from '../../models/films';
 
 @Component({
     selector: 'app-planet-details',
@@ -10,11 +13,32 @@ export class PlanetDetailsComponent implements OnInit {
 
     @Input() planetDetails: PlanetDetails;
 
-    constructor() {
+    residentsList: Resident[] = [];
+    filmList: Film[] = [];
+
+    constructor(private planetService: PlanetService) {
     }
 
     ngOnInit(): void {
-        console.log(this.planetDetails);
+        this.loadResidents();
+        this.loadFilms();
+    }
+
+    loadResidents(): void {
+        this.planetDetails.residents.forEach(e => {
+            this.planetService.getResidents(e).subscribe(response => {
+                this.residentsList.push(response);
+                // this.residentsList = this.residentsList.concat(response);
+            });
+        });
+    }
+
+    loadFilms(): void {
+        this.planetDetails.films.forEach(e => {
+            this.planetService.getFilms(e).subscribe(response => {
+                this.filmList.push(response);
+            });
+        });
     }
 
 }

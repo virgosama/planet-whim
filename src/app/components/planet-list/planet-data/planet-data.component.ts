@@ -11,7 +11,6 @@ export class PlanetDataComponent {
     @Output() clickedPlanet = new EventEmitter();
     @Input() planets: Array<PlanetDetails> = [];
 
-    planetColor = '#FFFFFF';
     constructor() {
     }
 

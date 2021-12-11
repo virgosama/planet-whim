@@ -27,7 +27,7 @@ export class PlanetListComponent implements OnInit {
         this.searchForm = this.formBuilder.group({
             planetName: ['']
         });
-        this.getPlanetList();
+        this.loadPlanetList();
     }
 
     showPlanetDetails(planet: PlanetDetails): void {
@@ -44,8 +44,8 @@ export class PlanetListComponent implements OnInit {
         });
     }
 
-    getPlanetList(): void {
-        this.planetService.loadPlanets(this.nextPage).subscribe(response => {
+    loadPlanetList(): void {
+        this.planetService.getPlanets(this.nextPage).subscribe(response => {
             this.nextPage = response.next;
             this.planetArrays = this.planetArrays.concat(response.results);
             this.endOfPage = false;
@@ -54,10 +54,9 @@ export class PlanetListComponent implements OnInit {
 
     onScrollingFinished(): void {
         if (this.nextPage) {
-            this.getPlanetList();
+            this.loadPlanetList();
         } else {
             this.endOfPage = true;
         }
-        console.log(this.endOfPage);
     }
 }

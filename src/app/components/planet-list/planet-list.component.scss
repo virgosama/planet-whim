@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  background-color: green;
+}
+
+
+.planet-list-container {
+  width: 900px;
+  margin: 0 auto 80px auto;
+}

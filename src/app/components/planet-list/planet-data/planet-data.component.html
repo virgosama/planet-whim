@@ -1,0 +1,7 @@
+<ul class="planet-data__container" scrollTracker (scrollingFinished)="onScrollingFinished()">
+    <li *ngFor="let planet of planets" (click)="onClickPlanet(planet)">
+        <div class="planet-logo"></div>
+        <span>{{planet?.name}}</span>
+        <div></div>
+    </li>
+</ul>

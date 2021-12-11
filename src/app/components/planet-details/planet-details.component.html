@@ -1,0 +1,47 @@
+<div class="planet-details__container">
+    <div class="planet-details__card">
+        <div class="planet-details__data">
+            <div>
+                <label>Planet Name:</label>
+                <span>{{planetDetails.name}}</span>
+                <label>Rotation Period:</label>
+                <span>{{planetDetails.rotation_period}}</span>
+                <label>Orbital Period:</label>
+                <span>{{planetDetails.orbital_period}}</span>
+                <label>Diameter:</label>
+                <span>{{planetDetails.diameter}}</span>
+                <label>Climate:</label>
+                <span>{{planetDetails.climate}}</span>
+                <label>Gravity:</label>
+                <span>{{planetDetails.gravity}}</span>
+                <label>Terrain:</label>
+                <span>{{planetDetails.terrain}}</span>
+                <label>Surface Water:</label>
+                <span>{{planetDetails.surface_water}}</span>
+                <label>Population:</label>
+                <span>{{planetDetails.population}}</span>
+
+                <label>URL:</label>
+                <span>{{planetDetails.url}}</span>
+            </div>
+            <div>
+                <label>Residents:</label>
+                <span *ngFor="let resident of planetDetails.residents">{{resident}}</span>
+                <label>Films:</label>
+                <span *ngFor="let film of planetDetails.films">{{film}}</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div>
+                <label>Created</label>
+                <span>{{planetDetails.created}}</span>
+            </div>
+            <br/>
+            <div>
+                <label>Edited:</label>
+                <span>{{planetDetails.edited}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>

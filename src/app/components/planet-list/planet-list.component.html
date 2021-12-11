@@ -1,0 +1,19 @@
+<div class="header">
+    <span>Title</span>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <input type="text" formControlName="planetName">
+        <button type="submit">search</button>
+    </form>
+</div>
+<div class="planet-list-container">
+    <app-planet-data
+            *ngIf="showPlanetList"
+            (clickedPlanet)="showPlanetDetails($event)"
+            [planets]="planetArrays"
+            (scrollingFinished)="onScrollingFinished()">
+    </app-planet-data>
+    <app-planet-details
+            *ngIf="!showPlanetList"
+            [planetDetails]="sendPlanetDetails">
+    </app-planet-details>
+</div>

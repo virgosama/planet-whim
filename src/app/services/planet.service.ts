@@ -10,8 +10,6 @@ import {Film} from '../models/films';
 })
 export class PlanetService {
 
-    baseUrl = 'https://swapi.dev/api/';
-
     constructor(private httpClient: HttpClient) {
     }
 

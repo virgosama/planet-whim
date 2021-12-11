@@ -28,7 +28,6 @@ export class PlanetDetailsComponent implements OnInit {
         this.planetDetails.residents.forEach(e => {
             this.planetService.getResidents(e).subscribe(response => {
                 this.residentsList.push(response);
-                // this.residentsList = this.residentsList.concat(response);
             });
         });
     }

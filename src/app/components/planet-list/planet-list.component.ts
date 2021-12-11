@@ -1,7 +1,9 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PlanetService} from '../../services/planet.service';
 import {PlanetDetails} from '../../models/planet';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'app-planet-list',
@@ -33,23 +35,26 @@ export class PlanetListComponent implements OnInit {
     showPlanetDetails(planet: PlanetDetails): void {
         this.sendPlanetDetails = planet;
         this.showPlanetList = false;
-        this.endOfPage = false;
     }
 
     onSearch(): void {
+        this.endOfPage = false;
         this.planetService.searchPlanets(this.searchForm.get('planetName').value).subscribe(response => {
             this.nextPage = response.next;
             this.planetArrays = response.results;
-            this.endOfPage = false;
+            if (!this.nextPage) {
+                this.endOfPage = true;
+            }
         });
     }
 
     loadPlanetList(): void {
-        this.planetService.getPlanets(this.nextPage).subscribe(response => {
-            this.nextPage = response.next;
-            this.planetArrays = this.planetArrays.concat(response.results);
-            this.endOfPage = false;
-        });
+        this.planetService.getPlanets(this.nextPage)
+            .subscribe(response => {
+                this.nextPage = response.next;
+                this.planetArrays = this.planetArrays.concat(response.results);
+                this.endOfPage = false;
+            });
     }
 
     onScrollingFinished(): void {

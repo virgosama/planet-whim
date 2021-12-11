@@ -85,7 +85,7 @@ describe('PlanetListComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should create component and load list of planets', () => {
         expect(component).toBeTruthy();
         expect(component.nextPage).toEqual(getPlanetsResp.next);
         expect(component.planetArrays).toEqual(getPlanetsResp.results);

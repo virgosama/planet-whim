@@ -43,23 +43,15 @@
                 <span>{{planetDetails.url}}</span>
             </div>
             <div>
-                <div class="data-row-separator">
+                <div *ngIf="planetDetails.residents.length > 0"
+                     class="data-row-separator">
                     <label>Residents:</label>
-                    <ng-template *ngIf="residentsList.length > 0; else noResidents">
-                        <span *ngFor="let resident of residentsList">{{resident.name}}</span>
-                    </ng-template>
-                    <ng-template #noResidents>
-                        <span>-</span>
-                    </ng-template>
+                    <span *ngFor="let resident of planetDetails.residents">{{resident}}</span>
                 </div>
-                <div class="data-row-separator">
+                <div *ngIf="planetDetails.films.length > 0"
+                     class="data-row-separator">
                     <label>Films:</label>
-                    <ng-template *ngIf="filmList.length > 0; else noFilms">
-                        <span *ngFor="let film of filmList">{{film.title}}</span>
-                    </ng-template>
-                    <ng-template #noFilms>
-                        <span>-</span>
-                    </ng-template>
+                    <span *ngFor="let film of planetDetails.films">{{film}}</span>
                 </div>
             </div>
         </div>

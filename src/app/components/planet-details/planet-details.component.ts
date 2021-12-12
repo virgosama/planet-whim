@@ -40,4 +40,5 @@ export class PlanetDetailsComponent implements OnInit {
             });
         });
 
+    }
 }

@@ -43,15 +43,15 @@
                 <span>{{planetDetails.url}}</span>
             </div>
             <div>
-                <div *ngIf="planetDetails.residents.length > 0"
+                <div *ngIf="residentsList.length > 0"
                      class="data-row-separator">
                     <label>Residents:</label>
-                    <span *ngFor="let resident of planetDetails.residents">{{resident}}</span>
+                    <span *ngFor="let resident of residentsList">{{resident.name}}</span>
                 </div>
-                <div *ngIf="planetDetails.films.length > 0"
+                <div *ngIf="filmList.length > 0"
                      class="data-row-separator">
                     <label>Films:</label>
-                    <span *ngFor="let film of planetDetails.films">{{film}}</span>
+                    <span *ngFor="let film of filmList">{{film.name}}</span>
                 </div>
             </div>
         </div>

@@ -13,11 +13,31 @@ export class PlanetDetailsComponent implements OnInit {
 
     @Input() planetDetails: PlanetDetails;
 
-    constructor() {
+    residentsList: Resident[] = [];
+    filmList: Film[] = [];
+
+    constructor(private planetService: PlanetService) {
     }
 
     ngOnInit(): void {
         window.scroll(0, 0);
+        this.loadResidents();
+        this.loadFilms();
     }
+
+    loadResidents(): void {
+        this.planetDetails.residents.forEach(e => {
+            this.planetService.getResidents(e).subscribe(response => {
+                this.residentsList.push(response);
+            });
+        });
+    }
+
+    loadFilms(): void {
+        this.planetDetails.films.forEach(e => {
+            this.planetService.getFilms(e).subscribe(response => {
+                this.filmList.push(response);
+            });
+        });
 
 }
